@@ -1,7 +1,7 @@
 # Mensageria Java SPRING AMQP e RabbitMQ
 
 
-# Tecnologias utilizadas:
+ <b>Tecnologias utilizadas:</b>
 <div  align="left" dir="auto" style="display: inline_block"> <br>
 <img alt="Bigas-Java" height="60" width="50"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" />
 <img alt="Bigas-Spring" height="60" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" />

@@ -3,17 +3,18 @@ package com.example.mensageria;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.*;
+
 
 public class Sender {
+
+    private static String NAME_QUEUE = "HELLO";
     public static void main(String [] args) throws Exception{
         //primeiro criar a conexão
         //setar as informações para cria-la
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("172.24.0.2");
+        factory.setHost("localhost");
         factory.setUsername("admin");
         factory.setPassword("pass123");
-
 
         try( Connection connection = factory.newConnection()) {
             //System.out.println(connection.hashCode());
@@ -22,7 +23,7 @@ public class Sender {
             Channel channel = connection.createChannel();
             System.out.println(channel);
 
-            // declarar a fila que será utilizada
+            // declarar a fila que será utilization
             //nome da fila, exclusiva, autodelete, durable, map(args)
             channel.queueDeclare(NAME_QUEUE, false, false, false, null);
 
@@ -38,3 +39,4 @@ public class Sender {
 
     }
 }
+

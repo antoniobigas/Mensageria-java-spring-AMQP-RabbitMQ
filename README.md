@@ -33,7 +33,7 @@ ao docker-compose. Continuando ... Este arquivo, possui as configurações utili
 RabbitMQ. Dessa formal, foram setados alguns parâmetros como: restart com sistema do host, mapeamento de dados entre host e container, imagem 
 utilizada do docker hub.
 
-Arquivo <p><a href="https://github.com/antoniobigas/Mensageria-java-spring-AMQP-RabbitMQ/blob/main/Mensageria/docker-compose.yml">Docker-Compose</a></p>
+Arquivo: <a href="https://github.com/antoniobigas/Mensageria-java-spring-AMQP-RabbitMQ/blob/main/Mensageria/docker-compose.yml">Docker-Compose</a>
 
 Caso você ainda não conhece os conceitos de virtualização e as vantagens do docker, 
 acesse esse artigo com a descrição toda dessa ferramenta. Link: https://simplificandoredes.com/docker-instalacao/.

@@ -23,3 +23,5 @@ volumes:
   logs-folder:
     name: ${log_rabbitmq_management}
     driver: local
+
+

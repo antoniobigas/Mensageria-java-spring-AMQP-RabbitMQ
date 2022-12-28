@@ -1,18 +1,18 @@
-package com.example.mensageria;
+package Topic;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
-public class Receiver {
-    private static String NAME_QUEUE = "HELLO";
+public class SecondReceiverTopic {
+    private static String NAME_EXCHANGE = "TopicExchange";
 
     public static void main(String[] args0) throws Exception{
         //primeiro criar a conexão
         //setar as informações para cria-la
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("172.18.0.2");
+        factory.setHost("172.24.0.2");
         factory.setUsername("admin");
         factory.setPassword("pass123");
         factory.setPort(5672);
@@ -24,16 +24,20 @@ public class Receiver {
         Channel channel = connection.createChannel();
         System.out.println(channel);
 
-        // declarar a fila que será utilizada
-        //nome da fila, exclusiva, autodelete, durable, map(args)
-        channel.queueDeclare(NAME_QUEUE, false, false, false, null);
+        //o servidor irá determinar um nome randomico para esta fila
+        //consequentemente ela será temporária
+        String nameQueue = channel.queueDeclare().getQueue();
+        String bindingKey = "#.rabbit";
+
+        //declaração da exchange
+        channel.exchangeDeclare(NAME_EXCHANGE,"topic");
+        channel.queueBind(nameQueue,NAME_EXCHANGE,bindingKey);
 
         DeliverCallback deliverycallback = (ConsumerTag, delivery) -> {
             String message = new String(delivery.getBody(),"UTF-8");
             System.out.println("[*] Received message: '"+ message + "'");
         };
-        //enviar a mensagem
-        channel.basicConsume(NAME_QUEUE, true, deliverycallback, ConsumerTag->{});
+
+        channel.basicConsume(nameQueue, true, deliverycallback, ConsumerTag->{});
     }
 }
-
